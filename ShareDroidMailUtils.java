@@ -2,12 +2,18 @@
 public class ShareDroidMailUtils
 {
 
-public static void shareLinkedMail()
+public static void shareLinkedMail(Context mContext)
 {
-  String link_val = "www.google.com"
-  String body = "<a href=\"" + link_val + "\">" + link_val+ "</a>"
 
-  intent.putExtra(android.content.Intent.EXTRA_TEXT, Html.fromHtml(body));
+                Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, EMAIL);
+                emailIntent.setType("text/html");
+                String link_val = "www.google.com";
+                String body = "<a href=\"" + link_val + "\">" + link_val+ "</a>";
+                // intent.putExtra(android.content.Intent.EXTRA_TEXT, Html.fromHtml(body));
+                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,"Hi, \n\n Bla bla bla \n some more bla bla \n\n and again blala bla \n finally bla \n\n\n\n\n ---Footer Here----\n\n\n" + "\n \n \n" + Html.fromHtml(body) );
+                mContext.startActivity(emailIntent);
+
 }
 
 public static void shareImageMail()
